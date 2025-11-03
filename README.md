@@ -21,20 +21,16 @@ This repository investigates how Convolutional Neural Networks (CNNs) and Vision
 ---
 
 ## Repository Structure
-```mermaid
-graph TD
-    A[bioimage-cnn-vit-bloodmnist] --> B[src/]
-    A --> C[notebooks/]
-    A --> D[results/]
-    A --> E[docs/]
-    A --> F[.github/]
-    A --> G[.specify/]
-    A --> H[Dockerfile]
-    A --> I[README.md]
-    B --> B1[model modules]
-    C --> C1[exploration notebooks]
-    D --> D1[metrics & visuals]
-    E --> E1[project_report.md]
+```
+bioimage-cnn-vit-bloodmnist/
+|- src/        (training loops, model definitions, data utilities)
+|- notebooks/  (exploratory analyses and prototypes)
+|- results/    (metrics, Grad-CAM heatmaps, attention maps)
+|- docs/       (project report and extended documentation)
+|- .github/    (automation prompts and CI configuration)
+|- .specify/   (internal tooling and project constitution)
+|- Dockerfile  (container definition)
+`- README.md   (project overview and guidance)
 ```
 
 - `src/` - Training loops, model definitions, data modules, and shared utilities.
@@ -62,10 +58,7 @@ pip install -r requirements.txt
 ### Docker Workflow
 ```bash
 docker build -t bioimage-cnn-vit .
-docker run -it --rm \
-  -p 8888:8888 \
-  -v ${PWD}:/app \
-  bioimage-cnn-vit
+docker run -it --rm -p 8888:8888 -v ${PWD}:/app bioimage-cnn-vit
 ```
 After the container starts, open the JupyterLab URL printed in the console. For GPU acceleration, append `--gpus all` when running the container on systems with NVIDIA Container Toolkit.
 
