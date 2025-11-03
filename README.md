@@ -31,16 +31,6 @@ bioimage-cnn-vit-bloodmnist/
 |- .specify/   (internal tooling and project constitution)
 |- Dockerfile  (container definition)
 `- README.md   (project overview and guidance)
-```
-
-- `src/` - Training loops, model definitions, data modules, and shared utilities.
-- `notebooks/` - Exploratory analyses and experiment prototypes.
-- `results/` - Saved metrics (`metrics.csv`), Grad-CAM heatmaps, attention maps, and other generated artefacts.
-- `docs/` - Project report and extended documentation.
-- `.github/` - Repository automation prompts and CI definitions.
-- `.specify/` - Internal automation scripts and project constitution (ignored in releases).
-- `Dockerfile`, `.dockerignore` - Containerised development and runtime environment.
-- `index.md` - Lightweight landing page for publishing the project summary online.
 
 ---
 
