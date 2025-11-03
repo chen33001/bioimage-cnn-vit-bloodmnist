@@ -31,6 +31,7 @@ bioimage-cnn-vit-bloodmnist/
 |- .specify/   (internal tooling and project constitution)
 |- Dockerfile  (container definition)
 `- README.md   (project overview and guidance)
+```
 
 ---
 
