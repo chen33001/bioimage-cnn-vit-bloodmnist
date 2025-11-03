@@ -20,11 +20,29 @@ This repository investigates how Convolutional Neural Networks (CNNs) and Vision
 
 ---
 
-## Repository Layout
+## Repository Structure
+```mermaid
+graph TD
+    A[bioimage-cnn-vit-bloodmnist] --> B[src/]
+    A --> C[notebooks/]
+    A --> D[results/]
+    A --> E[docs/]
+    A --> F[.github/]
+    A --> G[.specify/]
+    A --> H[Dockerfile]
+    A --> I[README.md]
+    B --> B1[model modules]
+    C --> C1[exploration notebooks]
+    D --> D1[metrics & visuals]
+    E --> E1[project_report.md]
+```
+
 - `src/` - Training loops, model definitions, data modules, and shared utilities.
 - `notebooks/` - Exploratory analyses and experiment prototypes.
 - `results/` - Saved metrics (`metrics.csv`), Grad-CAM heatmaps, attention maps, and other generated artefacts.
 - `docs/` - Project report and extended documentation.
+- `.github/` - Repository automation prompts and CI definitions.
+- `.specify/` - Internal automation scripts and project constitution (ignored in releases).
 - `Dockerfile`, `.dockerignore` - Containerised development and runtime environment.
 - `index.md` - Lightweight landing page for publishing the project summary online.
 

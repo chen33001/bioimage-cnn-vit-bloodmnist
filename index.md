@@ -1,25 +1,20 @@
-# 🧠 Bioimage Final Project
+# Bioimage Final Project
 
 ### Comparative Analysis of CNN and Vision Transformer on BloodMNIST
 
-This site presents the results, figures, and summary of the Bioimage final project by **Wei-Fu Chen** (University of Potsdam, 2025).
+This site shares the highlights of the Bioimage analysis capstone by **Wei-Fu Chen** (University of Potsdam, 2025).
 
 ---
 
-### 🔍 Overview
-CNNs and Vision Transformers (ViTs) represent two distinct paradigms for feature extraction in biomedical image analysis.  
-This project investigates their relative **accuracy, computational cost, and interpretability** on the BloodMNIST dataset.
+### Overview
+CNNs and Vision Transformers capture different patterns in biomedical images. This project compares their **accuracy**, **computational footprint**, and **interpretability** on the BloodMNIST dataset from MedMNIST v2.
 
 ---
 
-### 📊 Results Summary
-![Grad-CAM](results/gradcam_examples.png)
-![Attention Map](results/attention_maps.png)
-
-**Accuracy:**  
-CNN – 91 %  ViT – 96 %
+### Current Status
+Model training and comparative analysis are underway. Visual explanations and metrics will be published here once experiments are finalised.
 
 ---
 
-### 📄 Full Report
-👉 [View the complete report here](docs/project_report.md)
+### Full Report
+[Open the in-depth project report](docs/project_report.md) for methodology, metrics, and discussion (work in progress).
