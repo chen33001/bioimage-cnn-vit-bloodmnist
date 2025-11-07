@@ -65,6 +65,37 @@ BloodMNIST comprises 17,092 colour blood-cell microscopy images across eight dia
 - Preliminary results indicate CNN accuracy around 91 percent and ViT accuracy around 96 percent on the held-out test split.
 - Interpretability artefacts (Grad-CAM for CNNs and attention rollout for ViTs) are stored in `results/` and referenced in `index.md`.
 - Full experiment logs, hyperparameters, and narrative discussion are tracked in `docs/project_report.md` (in progress).
+- Performance notes:
+  - DataLoaders now default to 8 workers with `pin_memory` and persistent worker pools to keep the GPU fed on Ryzen-class CPUs.
+  - Automatic mixed precision (AMP) is enabled on CUDA devices by default, reducing wall-clock time while preserving accuracy.
+  - Every `scripts/run_all.ps1` invocation writes a timestamped log under `logs/run_all_*.log` showing start/end times and total duration.
+
+### End-to-End Workflow
+Run the full pipeline (data download → training → evaluation → interpretability overlays) with PowerShell:
+
+```powershell
+pwsh scripts/run_all.ps1
+```
+
+Use the reduced-compute configuration—designed for CPU-only or time-constrained environments—to generate a lighter set of artefacts:
+
+```powershell
+pwsh scripts/run_all.ps1 -ReducedCompute
+```
+
+By default the workflow uses a fixed random seed and saves artefacts to `models/`, `results/`, and `figures/`. The reduced mode writes into `models/reduced/`, `results/reduced/`, and `figures/reduced/` so full and lightweight runs can coexist. Execution timestamps and durations are persisted to `logs/run_all_*.log` for future reference.
+Latest full run on an RTX 3070 Ti + Ryzen 5800 (log: `logs/run_all_20251107_082243.log`) took ~9 h 47 min end-to-end with the following stage durations: CNN training ~1 h 18 min, ViT training ~8 h 28 min, aggregation ~3 s, interpretability overlays ~1 min 15 s.
+
+For a quick tour of the generated outputs, see `docs/artifacts.md`, `docs/report.md`, and the interactive `notebooks/results.ipynb`.
+
+Need to refresh confusion matrices without retraining? Use the helper CLI:
+
+```powershell
+pwsh -Command ".\\.venv\\Scripts\\python.exe -m src.plot_confusions --model cnn --split test --results-dir results --figures-dir figures --normalize"
+pwsh -Command ".\\.venv\\Scripts\\python.exe -m src.plot_confusions --model vit --split test --results-dir results --figures-dir figures --normalize"
+```
+
+Run the same command with `--split val` to regenerate validation plots.
 
 ---
 
